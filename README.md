@@ -7,7 +7,7 @@ This paper has been accepted by Neural Networks, and the code is now releasing g
 ![Model Architecture](img/fig1.png)
 *Figure 1: Overview*
 
-![Training Process](img/ticnn.png)
+![Training Process](img/ticnn.jpg)
 *Figure 2: Model Architecture*
 
 ## For MNIST Large Scale dataset:
