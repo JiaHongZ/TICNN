@@ -4,16 +4,20 @@ The code of paper “Enabling Scale and Rotation Invariance in Convolutional Neu
 
 This paper has been accepted by Neural Networks, and the code is now releasing gradually.
 
-![Model Architecture](img/fig1.png)
-*Figure 1: Overview*
+<figure>
+    <img src="img/fig1.png" alt="Model Architecture" style="width:500px;">
+    <figcaption>Figure 1: Overview</figcaption>
+</figure>
 
-![Training Process](img/ticnn.jpg)
-*Figure 2: Model Architecture*
+<figure>
+    <img src="img/ticnn.jpg" alt="Model Architecture" style="width:500px;">
+    <figcaption>Figure 2: Model Architecture</figcaption>
+</figure>
 
 ## For MNIST Large Scale dataset:
 
 - **Download the dataset**:
-  - Download the dataset from [https://zenodo.org/record/3820247](https://zenodo.org/record/3820247) and put it in `/zjh/data/`.
+  - Download the dataset from [MNIST Large Scale, Jansson and Lindeberg (2021)](https://zenodo.org/record/3820247) and put it in `/zjh/data/`.
 
 - **Training**:
   - Run the following command to train the model:
