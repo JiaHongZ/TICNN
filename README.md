@@ -4,12 +4,12 @@ The code of paper “Enabling Scale and Rotation Invariance in Convolutional Neu
 
 This paper has been accepted by Neural Networks, and the code is now releasing gradually.
 
-<figure>
+<figure style="text-align: center;">
     <img src="img/fig1.png" alt="Model Architecture" style="width:500px;">
     <figcaption>Figure 1: Overview</figcaption>
 </figure>
 
-<figure>
+<figure style="text-align: center;">
     <img src="img/ticnn.jpg" alt="Model Architecture" style="width:500px;">
     <figcaption>Figure 2: Model Architecture</figcaption>
 </figure>
@@ -22,12 +22,14 @@ This paper has been accepted by Neural Networks, and the code is now releasing g
 - **Training**:
   - Run the following command to train the model:
     ```bash
+    cd Scale
     python main_TICNN_LeNet_LS.py
     ```
 
 - **Testing**:
   - Run the following command to test the model:
     ```bash
+    cd Scale
     python main_TICNN_LeNet_LS_test.py
     ```
 
