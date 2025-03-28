@@ -182,9 +182,6 @@ if __name__ == '__main__':
                                                                 retinal_H=retinal_patch[0],
                                                                 retinal_W=retinal_patch[1],
                                                                 image_H=retinal_patch[0],image_W=retinal_patch[1],).cuda()
-                                    mynet = train(mynet, train_loader, test_loader, netname)
-                                    logger.info('train finished!')
-
                                     # dataset and test
                                     mynet.load_state_dict(torch.load(path + '/best.pth'))
                                     for mnist_sl_test in mnist_sl_tests:
@@ -227,9 +224,6 @@ if __name__ == '__main__':
                                 logger.info('train data:[{}]'.format(file_train[mnist_sl_train]))
                                 mynet = eval(create_obj)(in_channels=input, num_classes=classes,
                                                         ).cuda()
-                                mynet = train(mynet, train_loader, test_loader, netname)
-                                logger.info('train finished!')
-
                                 # dataset and test
                                 mynet.load_state_dict(torch.load(path + '/best.pth'))
                                 for mnist_sl_test in mnist_sl_tests:
