@@ -28,48 +28,6 @@ def setup_seed(seed):
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-def eyemovement_init(mynet,batch_size,test):
-    if test:
-        h_t = torch.zeros(
-            batch_size,
-            mynet.hidden_size,
-            dtype=torch.float,
-            requires_grad=True,
-        ).cuda()
-        l_t = torch.FloatTensor(batch_size, 2).uniform_(0, 0).cuda()
-        l_t.requires_grad = False
-    else:
-        h_t = torch.zeros(
-            batch_size,
-            mynet.hidden_size,
-            dtype=torch.float,
-            requires_grad=True,
-        ).cuda()
-        l_t = torch.FloatTensor(batch_size, 2).uniform_(-1, 1).cuda()
-        l_t.requires_grad = False
-    return h_t, l_t
-def scale_init(mynet,batch_size,test):
-    if test:
-        h_t = torch.zeros(
-            batch_size,
-            mynet.hidden_size,
-            dtype=torch.float,
-            requires_grad=True,
-        ).cuda()
-        l_t = torch.zeros(batch_size, 2).cuda() # 之所以是0，用的是加法
-        l_t[:,1] = l_t[:,1]*0
-        l_t.requires_grad = False
-    else:
-        h_t = torch.zeros(
-            batch_size,
-            mynet.hidden_size,
-            dtype=torch.float,
-            requires_grad=True,
-        ).cuda()
-        l_t = torch.zeros(batch_size, 2).cuda()
-        l_t[:,1] = l_t[:,1]*0
-        l_t.requires_grad = False
-    return h_t, l_t
 
 def test_all(test_loader, model):
     model.eval()

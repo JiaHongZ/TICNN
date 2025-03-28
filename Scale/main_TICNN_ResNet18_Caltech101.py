@@ -28,48 +28,6 @@ def setup_seed(seed):
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-def eyemovement_init(mynet,batch_size,test):
-    if test:
-        h_t = torch.zeros(
-            batch_size,
-            mynet.hidden_size,
-            dtype=torch.float,
-            requires_grad=True,
-        ).cuda()
-        l_t = torch.FloatTensor(batch_size, 2).uniform_(0, 0).cuda()
-        l_t.requires_grad = False
-    else:
-        h_t = torch.zeros(
-            batch_size,
-            mynet.hidden_size,
-            dtype=torch.float,
-            requires_grad=True,
-        ).cuda()
-        l_t = torch.FloatTensor(batch_size, 2).uniform_(-1, 1).cuda()
-        l_t.requires_grad = False
-    return h_t, l_t
-def scale_init(mynet,batch_size,test):
-    if test:
-        h_t = torch.zeros(
-            batch_size,
-            mynet.hidden_size,
-            dtype=torch.float,
-            requires_grad=True,
-        ).cuda()
-        l_t = torch.zeros(batch_size, 2).cuda() # 之所以是0，用的是加法
-        l_t[:,1] = l_t[:,1]*0
-        l_t.requires_grad = False
-    else:
-        h_t = torch.zeros(
-            batch_size,
-            mynet.hidden_size,
-            dtype=torch.float,
-            requires_grad=True,
-        ).cuda()
-        l_t = torch.zeros(batch_size, 2).cuda()
-        l_t[:,1] = l_t[:,1]*0
-        l_t.requires_grad = False
-    return h_t, l_t
 
 def val(model, val_loader):
     # 习惯性的用法，测试的开始
@@ -85,22 +43,7 @@ def val(model, val_loader):
         lab = lab.cuda()
         # no_grad表示不计算梯度
         with torch.no_grad():
-            if 'RFscaleyemoment' in netname:
-                h_t, s_t = scale_init(model, b, True)
-                _, l_t = eyemovement_init(model, b, True)
-                for t in range(model.movements):
-                    pre, h_t, s_t, l_t, b_t, s_log_pi, l_log_pi = model(img, l_t, s_t, h_t, True)
-            elif 'eyemovement' in netname:
-                if 'RFscale' in netname:
-                    h_t, l_t = scale_init(model, b, True)
-                else:
-                    h_t_s, s_t = scale_init(mynet, b, True)
-                    h_t_l, l_t = eyemovement_init(mynet, b, True)
-                    h_t = h_t_s + h_t_l
-                for t in range(model.movements):
-                    pre, h_t, l_t, s_t, b_t, p, codes = model(img, l_t, s_t, h_t, True)
-            else:
-                pre,*_ = model(img)
+            pre,*_ = model(img)
         _, lab_pre = torch.max(pre.data, 1)
         currect = torch.sum(lab_pre == lab.data)
         count += b
@@ -188,23 +131,13 @@ def train(mynet, train_loader, val_loader, netname):
                 pre, codes = mynet(img)
                 loss = loss_f1(pre, lab.long()) + loss_other
 
-            # 误差反向传播，优化
             optimiter.zero_grad() # 清空梯度
             loss.backward() # 反向传播
             optimiter.step() # 更新
-            # print('2', datetime.datetime.now())
             _, lab_pre = torch.max(pre.data, 1)
             currect += torch.sum(lab_pre == lab.data).cpu()
             count += b
-            # losss += loss.detach().cpu()
-            # print('3', datetime.datetime.now())
         train_accs.append(int(currect)/int(count))
-        # train_losss.append(losss/count)
-        # print(code_all)
-        # logger.info('train correct rate:[{}] epoch:[{}] current learning rate:[{}]'.format((int(currect)/int(count)),epo,optimiter.param_groups[0]['lr']))
-        # print(W)
-        # if rw != None:
-        #     rw = rw/(1+epo/10)
         # 每5轮更新学习率
         if epo % 10 == 0 and epo > 0:
             scheduler.step()
@@ -230,7 +163,6 @@ def train(mynet, train_loader, val_loader, netname):
     return mynet
 def test_all(test_loader, model):
     model.eval()
-
     count = 0
     correct = 0
     # 加载测试数据
@@ -241,22 +173,7 @@ def test_all(test_loader, model):
         lab = lab.cuda()
         # no_grad表示不计算梯度
         with torch.no_grad():
-            if 'RFscaleyemoment' in netname:
-                h_t, s_t = scale_init(model, b, True)
-                _, l_t = eyemovement_init(model, b, True)
-                for t in range(model.movements):
-                    pre, h_t, s_t, l_t, b_t, s_log_pi, l_log_pi = model(img, l_t, s_t, h_t, True)
-            elif 'eyemovement' in netname:
-                if 'RFscale' in netname:
-                    h_t, l_t = scale_init(model, b, True)
-                else:
-                    h_t_s, s_t = scale_init(mynet, b, True)
-                    h_t_l, l_t = eyemovement_init(mynet, b, True)
-                    h_t = h_t_s + h_t_l
-                for t in range(model.movements):
-                    pre, h_t, l_t, s_t, b_t, p, codes = model(img, l_t, s_t, h_t, True)
-            else:
-                pre, *_ = model(img)
+            pre, *_ = model(img)
         _, lab_pre = torch.max(pre.data, 1)
         currect = torch.sum(lab_pre == lab.data)
         count += b
