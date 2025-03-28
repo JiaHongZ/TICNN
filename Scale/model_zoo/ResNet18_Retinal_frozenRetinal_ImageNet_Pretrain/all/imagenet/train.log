@@ -1,6 +1,0 @@
-[2025-03-28 23:32:20,959][main_TICNN_ResNet18_ImageNet.py][line:332][INFO] train data:[[1]], 注意retinal size和inverse的image size一样了
-[2025-03-28 23:32:20,959][main_TICNN_ResNet18_ImageNet.py][line:335][INFO] netname:[ResNet18_Retinal_frozenRetinal_ImageNet_Pretrain], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
-[2025-03-28 23:35:20,573][main_TICNN_ResNet18_ImageNet.py][line:331][INFO] train data:[[1]], 注意retinal size和inverse的image size一样了
-[2025-03-28 23:35:20,573][main_TICNN_ResNet18_ImageNet.py][line:334][INFO] netname:[ResNet18_Retinal_frozenRetinal_ImageNet_Pretrain], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
-[2025-03-28 23:36:37,399][main_TICNN_ResNet18_ImageNet.py][line:331][INFO] train data:[[1]], 注意retinal size和inverse的image size一样了
-[2025-03-28 23:36:37,400][main_TICNN_ResNet18_ImageNet.py][line:334][INFO] netname:[ResNet18_Retinal_frozenRetinal_ImageNet_Pretrain], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
