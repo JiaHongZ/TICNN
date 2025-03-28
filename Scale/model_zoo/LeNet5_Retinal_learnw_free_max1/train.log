@@ -1,6 +1,2 @@
-[2025-03-25 21:04:57,353][main_TICNN_LeNet_LS.py][line:298][INFO] train data:[mnist_large_scale_tr50000_vl10000_te10000_outsize112-112_sctr1p000_scte1p000.h5]
-[2025-03-25 21:04:57,354][main_TICNN_LeNet_LS.py][line:299][INFO] retinal size和recover image size一样
-[2025-03-25 21:04:57,354][main_TICNN_LeNet_LS.py][line:302][INFO] netname:[LeNet5_Retinal_learnw_free_max1], retinal_patch:[(112, 112)], image_r_patch:[(112, 112)]
-[2025-03-25 21:08:22,741][main_TICNN_LeNet_LS_test.py][line:298][INFO] train data:[mnist_large_scale_tr50000_vl10000_te10000_outsize112-112_sctr1p000_scte1p000.h5]
-[2025-03-25 21:08:22,742][main_TICNN_LeNet_LS_test.py][line:299][INFO] retinal size和recover image size一样
-[2025-03-25 21:08:22,742][main_TICNN_LeNet_LS_test.py][line:302][INFO] netname:[LeNet5_Retinal_learnw_free_max1], retinal_patch:[(112, 112)], image_r_patch:[(112, 112)]
+[2025-03-28 23:34:15,065][main_TICNN_LeNet_LS.py][line:295][INFO] train data:[mnist_large_scale_tr50000_vl10000_te10000_outsize112-112_sctr1p000_scte1p000.h5]
+[2025-03-28 23:34:15,066][main_TICNN_LeNet_LS.py][line:298][INFO] netname:[LeNet5_Retinal_learnw_free_max1], retinal_patch:[(112, 112)], image_r_patch:[(112, 112)]

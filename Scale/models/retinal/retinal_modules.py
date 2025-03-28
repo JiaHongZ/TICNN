@@ -10,10 +10,6 @@ import torchex.nn as exnn
 
 # used in MNIST and Caltech101
 class retina_polar_scale2_large11(nn.Module):
-    """
-    
-    
-    """
     def __init__(
         self,
         r_min=0.05,
@@ -91,12 +87,9 @@ class retina_polar_scale2_large11(nn.Module):
         )
         
         self.fc_s[2].weight.data.zero_()
-        # self.fc_s[2].bias.data.copy_(torch.tensor([-2.7725], dtype=torch.float))
         self.fc_s[2].bias.data.copy_(torch.tensor([0], dtype=torch.float))
         self.fc_r[2].weight.data.zero_()
         self.fc_r[2].bias.data.copy_(torch.tensor([0], dtype=torch.float))
-        # self.fc_r[2].bias.data.copy_(torch.tensor([0], dtype=torch.float))
-    # self.avg_pool = nn.AvgPool2d([upsampling_factor_r, upsampling_factor_theta])
     def get_grid(self, weight_s, weight_r):
         b,_ = weight_s.shape
         radius = self.radius[None].clone().repeat(b,1,1,1)
@@ -122,13 +115,8 @@ class retina_polar_scale2_large11(nn.Module):
         # 这里l_t_prev无用
         weight_s, weight_r = self.att(x)
         weight_s = weight_s * w
-        # print(weight_s[0], weight_r[0])
-        # weight = torch.ones_like(weight)
-        # print(l_t_prev.view(-1, 1, 1, 2))
         grid_2d_batch = self.get_grid(weight_s, weight_r) + l_t_prev.view(-1, 1, 1, 2)
         sampled_points = F.grid_sample(x, grid_2d_batch)
-        # print(sampled_points.shape)
-        # print(sampled_points)
         sampled_points = self.avg_pool(sampled_points)
         return weight_s, weight_r, sampled_points
 
@@ -226,12 +214,9 @@ class retina_polar_scale2_large11_ImageNet(nn.Module):
         )
         
         self.fc_s[2].weight.data.zero_()
-        # self.fc_s[2].bias.data.copy_(torch.tensor([-2.7725], dtype=torch.float))
         self.fc_s[2].bias.data.copy_(torch.tensor([0], dtype=torch.float))
         self.fc_r[2].weight.data.zero_()
         self.fc_r[2].bias.data.copy_(torch.tensor([0], dtype=torch.float))
-        # self.fc_r[2].bias.data.copy_(torch.tensor([0], dtype=torch.float))
-    # self.avg_pool = nn.AvgPool2d([upsampling_factor_r, upsampling_factor_theta])
     def get_grid(self, weight_s, weight_r):
         b,_ = weight_s.shape
         radius = self.radius[None].clone().repeat(b,1,1,1)
@@ -259,13 +244,8 @@ class retina_polar_scale2_large11_ImageNet(nn.Module):
         weight_s = weight_s * w
         weights_used = weight_s.clone()
         weights_used[weights_used>1] = 1
-        # print(weight_s[0], weight_r[0])
-        # weight = torch.ones_like(weight)
-        # print(l_t_prev.view(-1, 1, 1, 2))
         grid_2d_batch = self.get_grid(weights_used, weight_r) + l_t_prev.view(-1, 1, 1, 2)
         sampled_points = F.grid_sample(x, grid_2d_batch)
-        # print(sampled_points.shape)
-        # print(sampled_points)
         sampled_points = self.avg_pool(sampled_points)
         return weight_s, weight_r, sampled_points
 
@@ -334,17 +314,9 @@ class retina_polar_learnw_teacher(nn.Module):
 
 
     def forward(self, x, l_t_prev, s_t, w=1):
-        # 这里l_t_prev无用
-        # weight_s, weight_r = self.att(x)
-        # weight_s = weight_s * w
-        # print(weight_s[0], weight_r[0])
-        # weight = torch.ones_like(weight)
-        # print(l_t_prev.view(-1, 1, 1, 2))
         batch_size, *_ = x.shape
         grid_2d_batch = self.get_grid(batch_size, w) + l_t_prev.view(-1, 1, 1, 2)
         sampled_points = F.grid_sample(x, grid_2d_batch, padding_mode='border')
-        # print(sampled_points.shape)
-        # print(sampled_points)
         sampled_points = self.avg_pool(sampled_points)
         return sampled_points
 
@@ -413,17 +385,9 @@ class retina_polar_learnw_org(nn.Module):
 
 
     def forward(self, x, l_t_prev, s_t, w=1):
-        # 这里l_t_prev无用
-        # weight_s, weight_r = self.att(x)
-        # weight_s = weight_s * w
-        # print(weight_s[0], weight_r[0])
-        # weight = torch.ones_like(weight)
-        # print(l_t_prev.view(-1, 1, 1, 2))
         batch_size, *_ = x.shape
         grid_2d_batch = self.get_grid(batch_size) + l_t_prev.view(-1, 1, 1, 2)
         sampled_points = F.grid_sample(x, grid_2d_batch, padding_mode='border')
-        # print(sampled_points.shape)
-        # print(sampled_points)
         sampled_points = self.avg_pool(sampled_points)
         return sampled_points
 
@@ -450,7 +414,6 @@ class inverse_retina_polar_batch_fixed(nn.Module):
         )
         for i in range(H):
             for j in range(W):
-                # 归一化到单位圆上的点
                 x = (i - int(H/2))/(H/2) # 这里除以H/2的依据是，r轴长H/2就覆盖了整个面积，然后归一化
                 y = (j - int(W/2))/(W/2)
                 r = retinal_H * (np.log(np.clip(np.sqrt(x**2+y**2),1e-6,(H**2+W**2)))-np.log(r_min))/(np.log(r_max)-np.log(r_min))
@@ -464,7 +427,6 @@ class inverse_retina_polar_batch_fixed(nn.Module):
         self.avg_pool = nn.AvgPool2d([upsampling_factor_r, upsampling_factor_theta])
 
     def forward(self, x, l_t_prev):
-        # 这里不用location
         grid_2d_batch = l_t_prev.view(-1, 1, 1, 2) * 0 + self.grid_2d[None]
         sampled_points = F.grid_sample(x, grid_2d_batch, padding_mode='border')
         sampled_points = self.avg_pool(sampled_points)

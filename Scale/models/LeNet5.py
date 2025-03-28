@@ -4,10 +4,8 @@ import torch.nn.functional as F
 import random
 import numpy as np
 import models.Attention as Att
-# Deformable ConvNets v2: More Deformable, Better Results
 import models.deform_conv_v2 as DC
 import models.LPS_core.LogPoolingCovDis as LPS
-import models.retinal.modules as RetinalM
 
 from models.RAMLPM.modules import (
     retina_polar,

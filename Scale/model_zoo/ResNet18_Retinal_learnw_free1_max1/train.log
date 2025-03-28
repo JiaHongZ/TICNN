@@ -1,0 +1,65 @@
+[2025-03-28 16:35:57,066][main_TICNN_ResNet18_Caltech101.py][line:372][INFO] netname:[ResNet18_Retinal_learnw_free1_max1], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
+[2025-03-28 16:36:33,512][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.2992198169231415] weightss:[tensor([0.4995], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0013], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.6342, 0.0000], device='cuda:0')] epoch:[0]
+[2025-03-28 16:36:51,235][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.3184947073459625] weightss:[tensor([0.4967], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0006], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.3776, 0.0000], device='cuda:0')] epoch:[1]
+[2025-03-28 16:37:06,906][main_TICNN_ResNet18_Caltech101_test.py][line:200][INFO] netname:[ResNet18_Retinal_learnw_free1_max1], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
+[2025-03-28 16:37:25,714][main_TICNN_ResNet18_Caltech101_test.py][line:217][INFO] ---------------------
+[2025-03-28 16:37:25,714][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] train data:[[1.0]], test data:[[0.25]], overall test:[0.02810516767203808]
+[2025-03-28 16:37:25,714][main_TICNN_ResNet18_Caltech101_test.py][line:222][INFO] ---------------------
+[2025-03-28 16:37:29,242][main_TICNN_ResNet18_Caltech101_test.py][line:217][INFO] ---------------------
+[2025-03-28 16:37:29,243][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] train data:[[1.0]], test data:[[0.5]], overall test:[0.30825021862983704]
+[2025-03-28 16:37:29,243][main_TICNN_ResNet18_Caltech101_test.py][line:222][INFO] ---------------------
+[2025-03-28 16:37:32,751][main_TICNN_ResNet18_Caltech101_test.py][line:217][INFO] ---------------------
+[2025-03-28 16:37:32,751][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] train data:[[1.0]], test data:[[0.75]], overall test:[0.2810516655445099]
+[2025-03-28 16:37:32,751][main_TICNN_ResNet18_Caltech101_test.py][line:222][INFO] ---------------------
+[2025-03-28 16:37:36,257][main_TICNN_ResNet18_Caltech101_test.py][line:217][INFO] ---------------------
+[2025-03-28 16:37:36,258][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] train data:[[1.0]], test data:[[1.0]], overall test:[0.31867632269859314]
+[2025-03-28 16:37:36,258][main_TICNN_ResNet18_Caltech101_test.py][line:222][INFO] ---------------------
+[2025-03-28 16:37:39,730][main_TICNN_ResNet18_Caltech101_test.py][line:217][INFO] ---------------------
+[2025-03-28 16:37:39,730][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] train data:[[1.0]], test data:[[1.25]], overall test:[0.3000906705856323]
+[2025-03-28 16:37:39,731][main_TICNN_ResNet18_Caltech101_test.py][line:222][INFO] ---------------------
+[2025-03-28 16:37:43,259][main_TICNN_ResNet18_Caltech101_test.py][line:217][INFO] ---------------------
+[2025-03-28 16:37:43,259][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] train data:[[1.0]], test data:[[1.5]], overall test:[0.2878513038158417]
+[2025-03-28 16:37:43,260][main_TICNN_ResNet18_Caltech101_test.py][line:222][INFO] ---------------------
+[2025-03-28 16:37:46,822][main_TICNN_ResNet18_Caltech101_test.py][line:217][INFO] ---------------------
+[2025-03-28 16:37:46,823][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] train data:[[1.0]], test data:[[1.75]], overall test:[0.27969175577163696]
+[2025-03-28 16:37:46,823][main_TICNN_ResNet18_Caltech101_test.py][line:222][INFO] ---------------------
+[2025-03-28 16:37:50,283][main_TICNN_ResNet18_Caltech101_test.py][line:217][INFO] ---------------------
+[2025-03-28 16:37:50,283][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] train data:[[1.0]], test data:[[2.0]], overall test:[0.263825923204422]
+[2025-03-28 16:37:50,284][main_TICNN_ResNet18_Caltech101_test.py][line:222][INFO] ---------------------
+[2025-03-28 16:37:50,284][main_TICNN_ResNet18_Caltech101_test.py][line:200][INFO] netname:[ResNet18_Retinal_learnw_free1_max1], retinal_patch:[(196, 196)], image_r_patch:[(196, 196)]
+[2025-03-28 16:55:06,576][main_TICNN_ResNet18_Caltech101_test.py][line:199][INFO] netname:[ResNet18_Retinal_learnw_free1_max1], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
+[2025-03-28 16:55:25,959][main_TICNN_ResNet18_Caltech101_test.py][line:216][INFO] ---------------------
+[2025-03-28 16:55:25,959][main_TICNN_ResNet18_Caltech101_test.py][line:220][INFO] train data:[[1.0]], test data:[[0.25]], overall test:[0.02810516767203808]
+[2025-03-28 16:55:25,959][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] ---------------------
+[2025-03-28 16:55:29,623][main_TICNN_ResNet18_Caltech101_test.py][line:216][INFO] ---------------------
+[2025-03-28 16:55:29,624][main_TICNN_ResNet18_Caltech101_test.py][line:220][INFO] train data:[[1.0]], test data:[[0.5]], overall test:[0.30825021862983704]
+[2025-03-28 16:55:29,624][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] ---------------------
+[2025-03-28 16:55:33,316][main_TICNN_ResNet18_Caltech101_test.py][line:216][INFO] ---------------------
+[2025-03-28 16:55:33,317][main_TICNN_ResNet18_Caltech101_test.py][line:220][INFO] train data:[[1.0]], test data:[[0.75]], overall test:[0.2810516655445099]
+[2025-03-28 16:55:33,317][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] ---------------------
+[2025-03-28 16:55:36,985][main_TICNN_ResNet18_Caltech101_test.py][line:216][INFO] ---------------------
+[2025-03-28 16:55:36,985][main_TICNN_ResNet18_Caltech101_test.py][line:220][INFO] train data:[[1.0]], test data:[[1.0]], overall test:[0.31867632269859314]
+[2025-03-28 16:55:36,985][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] ---------------------
+[2025-03-28 16:55:40,898][main_TICNN_ResNet18_Caltech101_test.py][line:216][INFO] ---------------------
+[2025-03-28 16:55:40,899][main_TICNN_ResNet18_Caltech101_test.py][line:220][INFO] train data:[[1.0]], test data:[[1.25]], overall test:[0.3000906705856323]
+[2025-03-28 16:55:40,899][main_TICNN_ResNet18_Caltech101_test.py][line:221][INFO] ---------------------
+[2025-03-28 16:56:23,095][main_TICNN_ResNet18_Caltech101.py][line:371][INFO] netname:[ResNet18_Retinal_learnw_free1_max1], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
+[2025-03-28 16:56:57,537][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.3111518919467926] weightss:[tensor([0.4973], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0014], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.6342, 0.0000], device='cuda:0')] epoch:[0]
+[2025-03-28 16:57:16,400][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.3083983361721039] weightss:[tensor([0.4976], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0011], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.3776, 0.0000], device='cuda:0')] epoch:[1]
+[2025-03-28 16:57:35,301][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.3758604824542999] weightss:[tensor([0.4722], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0097], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.4933, 0.0000], device='cuda:0')] epoch:[2]
+[2025-03-28 16:57:54,118][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.40385496616363525] weightss:[tensor([0.5101], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0035], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.3225, 0.0000], device='cuda:0')] epoch:[3]
+[2025-03-28 16:58:13,585][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.43597981333732605] weightss:[tensor([0.4799], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0025], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.3153, 0.0000], device='cuda:0')] epoch:[4]
+[2025-03-28 16:58:32,681][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.4694814085960388] weightss:[tensor([0.5185], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0058], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.8198, 0.0000], device='cuda:0')] epoch:[5]
+[2025-03-28 16:58:44,924][main_TICNN_ResNet18_Caltech101.py][line:371][INFO] netname:[ResNet18_Retinal_learnw_free1_max1], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
+[2025-03-28 16:59:19,263][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.3042680025100708] weightss:[tensor([0.4999], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0011], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.6342, 0.0000], device='cuda:0')] epoch:[0]
+[2025-03-28 16:59:38,318][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.3139054477214813] weightss:[tensor([0.5004], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0320], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.3776, 0.0000], device='cuda:0')] epoch:[1]
+[2025-03-28 16:59:43,298][main_TICNN_ResNet18_Caltech101.py][line:371][INFO] netname:[ResNet18_Retinal_learnw_free1_max1], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
+[2025-03-28 17:00:21,906][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.308857262134552] weightss:[tensor([0.4980], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0003], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.6342, 0.0000], device='cuda:0')] epoch:[0]
+[2025-03-28 17:00:41,008][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.2905002236366272] weightss:[tensor([0.5017], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0041], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.3776, 0.0000], device='cuda:0')] epoch:[1]
+[2025-03-28 17:00:59,852][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.36714088916778564] weightss:[tensor([0.5087], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0008], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.4933, 0.0000], device='cuda:0')] epoch:[2]
+[2025-03-28 17:01:18,660][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.41303348541259766] weightss:[tensor([0.5030], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0004], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.3225, 0.0000], device='cuda:0')] epoch:[3]
+[2025-03-28 17:01:38,410][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.44928866624832153] weightss:[tensor([0.5021], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0007], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.3153, 0.0000], device='cuda:0')] epoch:[4]
+[2025-03-28 17:01:57,635][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.451124370098114] weightss:[tensor([0.5047], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0009], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.8198, 0.0000], device='cuda:0')] epoch:[5]
+[2025-03-28 17:02:16,354][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.47407066822052] weightss:[tensor([0.4966], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0018], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([1., 0.], device='cuda:0')] epoch:[6]
+[2025-03-28 17:04:07,565][main_TICNN_ResNet18_Caltech101.py][line:371][INFO] netname:[ResNet18_Retinal_learnw_free1_max1], retinal_patch:[(224, 224)], image_r_patch:[(224, 224)]
+[2025-03-28 17:04:41,576][main_TICNN_ResNet18_Caltech101.py][line:216][INFO] Training test val:[0.30289122462272644] weightss:[tensor([0.5005], device='cuda:0', grad_fn=<SelectBackward0>)] weightr:[tensor([-0.0018], device='cuda:0', grad_fn=<SelectBackward0>)] scale:[tensor([0.6342, 0.0000], device='cuda:0')] epoch:[0]

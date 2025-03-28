@@ -181,13 +181,11 @@ if __name__ == '__main__':
     notbs = [False]
     netnames = ['LeNet5_Retinal_learnw_free_max1']
     datanames = ['mnist_ls']
-    # 一共跑3次，防止随机误差,每次使用不同的随机种子 0 50 100
     seeds = [0]
     all_epoch = 60
     if not os.path.exists(os.path.join(os.getcwd(), 'model_zoo')):
         os.makedirs(os.path.join(os.getcwd(), 'model_zoo'))
-    att_alphas = [5] # 对放缩权重的修正系数,目前没用了
-    retinal_patchs = [(112,112),(96,96),(84,84)] # retinal感受野
+    retinal_patchs = [(112,112),(96,96),(84,84)]
     mnist_sl_trains = [0,1,2]
     mnist_sl_tests = [4,8,12,16]
     file_train = [
@@ -237,7 +235,6 @@ if __name__ == '__main__':
             for dataname in datanames:
                 for notb in notbs:
                     # 加载数据
-                    # 数据预处理 （防止过拟合）
                     transform = trans.Compose([
                         # trans.RandomResizedCrop((112,112),(0.5,4)),
                         trans.ToTensor(),
@@ -296,7 +293,6 @@ if __name__ == '__main__':
                                     test_loader = DataLoader(dataset=test_data, batch_size=batch_size, num_workers=16, shuffle=True)
 
                                     logger.info('train data:[{}]'.format(file_train[mnist_sl_train]))
-                                    logger.info('retinal size和recover image size一样')
                                     logger.info('netname:[{}], retinal_patch:[{}], image_r_patch:[{}]'.format(netname,
                                                                                                                 retinal_patch,
                                                                                                                 retinal_patch))

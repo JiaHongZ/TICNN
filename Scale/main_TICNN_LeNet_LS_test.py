@@ -32,126 +32,6 @@ torch.autograd.set_detect_anomaly(True)
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 os.environ['CUDA_VISIBLE_DEVICES'] = '5'
 
-def test(model, test_loader):
-    # 习惯性的用法，测试的开始
-    model.eval()
-    count = 0
-    correct = 0
-    # 加载测试数据
-    for index, data in enumerate(tqdm.tqdm(test_loader)):
-        img, lab = data
-        b, c, h, w = img.shape
-        img = img.cuda()
-        lab = lab.cuda()
-        # no_grad表示不计算梯度
-        with torch.no_grad():
-            pre,*_ = model(img)
-        _, lab_pre = torch.max(pre.data, 1)
-        currect = torch.sum(lab_pre == lab.data)
-        count += b
-        correct += currect
-        
-    return torch.true_divide(correct, count)
-
-def train(mynet, train_loader, test_loader, netname):
-    mynet.train()
-    print('-----start train model------')
-    # 定义优化器， 初始学习率0.0001， 权重衰减
-    optimiter = torch.optim.Adam(mynet.parameters(),lr=0.0001,betas=(0.9, 0.999),eps=1e-8, weight_decay=0.0001)
-    # 余弦退火调整学习率， 逐渐减小学习率
-    warmup = True
-    if warmup:
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimiter, 10, eta_min=1e-7)
-
-    # 损失函数 交叉熵损失函数
-    loss_f1 = torch.nn.CrossEntropyLoss()  # 与pattern的损失函数
-    elbo_loss = Elbo()
-    loss_f2 = torch.nn.MSELoss()  # 与pattern的损失函数
-
-    best = 0
-    best_epo = 0
-    train_accs = []
-    train_losss = []
-    test_accs = []
-    for epo in range(all_epoch):
-        mynet.eval()
-        currect = 0
-        count = 0
-        code_all = []
-        losss = 0
-        # 获取一个batch的数据
-        for i, data in enumerate(tqdm.tqdm(train_loader)):
-            img, lab = data # img 它的大小是 (64,3,224,224)
-            b, c, h, w = img.shape
-            img = img.cuda()
-            lab = lab.cuda()
-            if '_learnw' in netname:
-                loss_other = 0
-                if mnist_sl_train == 0:
-                    scale_c = 0.25
-                elif mnist_sl_train == 1:
-                    scale_c = 0.5
-                elif mnist_sl_train == 2:
-                    scale_c = 1
-                else:
-                    scale_c = 1
-                pre, codes = mynet(img,False,scale_c)
-                weightsr = codes[1]
-                weightss = codes[0]
-                scales3 = codes[2]
-                if weightss!=None and scales3!=None:
-                    scales3[:, 0] = 1 / (scales3[:, 0])
-                    scales3[scales3>1] = 1
-                    loss_other = loss_f2(torch.cat([weightss,weightsr],1), scales3)
-                loss = loss_f1(pre, lab.long()) + loss_other
-            elif '_ablation' in netname:
-                pre, codes = mynet(img,False)
-                loss = loss_f1(pre, lab.long())
-            elif '_sc' in netname:
-                pre, codes = mynet(img,False)
-                loss = loss_f1(pre, lab.long())
-            elif 'PSTN' in netname:
-                pre, thetas, beta = mynet(img,False)
-                loss_other, individual_terms = elbo_loss(pre, beta, lab.long())
-                loss = loss_f1(pre, lab.long()) + loss_other
-            else:
-                pre, codes = mynet(img)
-                loss = loss_f1(pre, lab.long())
-            # torch.autograd.set_detect_anomaly(True)
-            # 误差反向传播，优化
-            optimiter.zero_grad() # 清空梯度
-            loss.backward() # 反向传播
-            optimiter.step() # 更新
-
-            _, lab_pre = torch.max(pre.data, 1)
-            currect += torch.sum(lab_pre == lab.data).cpu()
-            count += b
-            
-        train_accs.append(int(currect)/int(count))
-
-        # 每5轮更新学习率
-        if epo % 10 == 0 and epo > 0:
-            scheduler.step()
-            print('epoch', epo, ' current learning rate', optimiter.param_groups[0]['lr'])
-
-        test_val_ = test(mynet, test_loader)
-        test_accs.append(test_val_.cpu())
-
-        # 保存参数
-        if test_val_ > best:
-            # 保存参数文件
-            torch.save(mynet.state_dict(), path +'/best.pth')
-            best = test_val_
-            best_epo = epo
-            print('best',best)
-    logger.info('----dataname:[{}]----netname:[{}]----not balance:[{}]----seed:[{}]---'.format(netname,dataname,notb,seed))
-    logger.info('best:[{}] epoch:[{}]'.format(best, best_epo))
-    logger.info('---------------------')
-    np.savetxt(path +'/train_acc.csv', train_accs, delimiter=',')
-    # np.savetxt(path +'/train_loss.csv', train_losss, delimiter=',')
-    np.savetxt(path +'/test_acc.csv', test_accs, delimiter=',')
-    return mynet
-
 def test_all(test_loader, model):
     model.eval()
 
@@ -181,13 +61,11 @@ if __name__ == '__main__':
     notbs = [False]
     netnames = ['LeNet5_Retinal_learnw_free_max1']
     datanames = ['mnist_ls']
-    # 一共跑3次，防止随机误差,每次使用不同的随机种子 0 50 100
     seeds = [0]
     all_epoch = 60
     if not os.path.exists(os.path.join(os.getcwd(), 'model_zoo')):
         os.makedirs(os.path.join(os.getcwd(), 'model_zoo'))
-    att_alphas = [5] # 对放缩权重的修正系数,目前没用了
-    retinal_patchs = [(112,112),(96,96),(84,84)] # retinal感受野
+    retinal_patchs = [(112,112),(96,96),(84,84)]
     mnist_sl_trains = [0,1,2]
     mnist_sl_tests = [4,8,12,16]
     file_train = [
