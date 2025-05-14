@@ -33,6 +33,28 @@ This paper has been accepted by Neural Networks, and the code is now releasing g
     python main_TICNN_LeNet_LS_test.py
     ```
 
+## For Caltech101 dataset:
+
+  - Download the scaled Caltech101 form: 通过网盘分享的文件：caltech101_scale.rar
+  链接: https://pan.baidu.com/s/13zF3sGypWK0Kb_-ejJlCIQ?pwd=3gby 提取码: 3gby 复制这段内容后打开百度网盘手机App，操作更方便哦 
+  --来自百度网盘超级会员v9的分享 
+
+  and put it in `/zjh/data/`.
+
+- **Training**:
+  - Run the following command to train the model:
+    ```bash
+    cd Scale
+    python main_TICNN_ResNet18_Caltech101.py
+    ```
+
+- **Testing**:
+  - Run the following command to test the model:
+    ```bash
+    cd Scale
+    python main_TICNN_ResNet18_Caltech101_test.py
+    ```
+
 ## Reference
 
 Please cite the following paper if you use this code in your research:
