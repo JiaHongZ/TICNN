@@ -55,6 +55,13 @@ This paper has been accepted by Neural Networks, and the code is now releasing g
     python main_TICNN_ResNet18_Caltech101_test.py
     ```
 
+## Pretrained weights
+
+  - 通过网盘分享的文件：model_zoo.zip
+链接: https://pan.baidu.com/s/1F5T7gW6tjqKJXBs4781U7g?pwd=22bq 提取码: 22bq 复制这段内容后打开百度网盘手机App，操作更方便哦 
+--来自百度网盘超级会员v9的分享
+
+
 ## Reference
 
 Please cite the following paper if you use this code in your research:
